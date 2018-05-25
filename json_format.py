@@ -1,22 +1,8 @@
 # encoding: utf-8
 
 """
-__title__ = 'json_format' 
-__author__ = 'Jeffmxh' 
-# code is far away from bugs with the god animal protecting 
-    I love animals. They taste delicious. 
-              ┏┓      ┏┓ 
-            ┏┛┻━━━┛┻┓ 
-            ┃      ☃       ┃ 
-            ┃  ┳┛  ┗┳  ┃ 
-            ┃      ┻      ┃ 
-            ┗━┓      ┏━┛ 
-                ┃      ┗━━━┓ 
-                ┃  神兽保佑    ┣┓ 
-                ┃　永无BUG！   ┏┛ 
-                ┗┓┓┏━┳┓┏┛ 
-                  ┃┫┫  ┃┫┫ 
-                  ┗┻┛  ┗┻┛ 
+__title__ = 'json_format'
+__author__ = 'Jeffmxh'
 """
 
 import argparse

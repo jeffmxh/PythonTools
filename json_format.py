@@ -9,6 +9,10 @@ import argparse
 import json
 
 def json_format(infile):
+    '''用于将json文件进行格式化
+    Usage:
+        json_format('test.json')
+    '''
     assert isinstance(infile, str)
     assert infile.endswith('.json')
     with open(infile, 'r') as f:

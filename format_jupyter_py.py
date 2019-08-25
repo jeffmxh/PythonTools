@@ -1,8 +1,8 @@
 # coding: utf-8
 
 """
-__title__ = 'Jeffmxh.py'
-__author__ = 'format_jupyter_py'
+__title__ = 'format_jupyter_py'
+__author__ = 'Jeffmxh'
 
                    _ooOoo_
                   o8888888o
@@ -129,7 +129,7 @@ __author__ = '{}'
         func_statements = ScriptFormatter.format_func(func_statements)
         main_func_statements = ScriptFormatter.format_main(main_func_statements)
 
-        result = ScriptFormatter.my_title.format(ScriptFormatter.author, file_name) + '\n'
+        result = ScriptFormatter.my_title.format(file_name, ScriptFormatter.author) + '\n'
         result = result + import_statements if import_statements else result
         result = result + from_import_statements if from_import_statements else result
         result = result + class_statements if class_statements else result

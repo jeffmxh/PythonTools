@@ -186,7 +186,7 @@ __author__ = '{}'
         main_func_statements.insert(0, header)
         return ''.join(main_func_statements)
 
-def main(input_file):
+def main(input_file, file_title):
     '''
     处理文件主函数
     '''
@@ -196,7 +196,7 @@ def main(input_file):
         for line in f:
             raw_script.append(line)
 
-    format_script = ScriptFormatter.classify_script(raw_script)
+    format_script = ScriptFormatter.classify_script(raw_script, file_title)
     file_name = re.sub(r'\.py', '', input_file) + '_formated.py'
     with open(file_name, 'w', encoding='utf-8') as f:
         f.write(format_script)
@@ -205,5 +205,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Jupyter保存python程序格式化脚本')
     parser.add_argument('-f', '--file', dest='input_file', nargs='?', default='',
                         help='Name of the input excel file in folder:raw_data.')
+    parser.add_argument('-t', '--title', dest='file_title', nargs='?', default='',
+                        help='Name of the input excel file in folder:raw_data.')            
     args = parser.parse_args()
-    main(args.input_file)
+    main(args.input_file, args.file_title)

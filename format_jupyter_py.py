@@ -37,7 +37,7 @@ class ScriptFormatter:
 # coding: utf-8
 
 """
-__title__ = '{}.py'
+__title__ = '{}'
 __author__ = '{}'
 
                    _ooOoo_
@@ -61,7 +61,7 @@ __author__ = '{}'
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
             佛祖保佑       永无BUG
 """
-    '''
+    '''.strip() + '\n'
     def __init__(self):
         pass
 
@@ -192,7 +192,7 @@ def main(input_file, file_title):
     '''
     assert input_file.endswith('.py')
     raw_script = []
-    with open(input_file, 'r') as f:
+    with open(input_file, 'r', encoding='utf-8') as f:
         for line in f:
             raw_script.append(line)
 
@@ -206,6 +206,6 @@ if __name__ == '__main__':
     parser.add_argument('-f', '--file', dest='input_file', nargs='?', default='',
                         help='Name of the input excel file in folder:raw_data.')
     parser.add_argument('-t', '--title', dest='file_title', nargs='?', default='',
-                        help='Name of the input excel file in folder:raw_data.')            
+                        help='Name of the input excel file in folder:raw_data.')
     args = parser.parse_args()
     main(args.input_file, args.file_title)

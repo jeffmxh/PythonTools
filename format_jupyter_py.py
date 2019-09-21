@@ -98,14 +98,14 @@ __author__ = '{}'
                 else:
                     main_func_statements.append(line)
             elif IS_CLASS_INNER:
-                if re.search(r'^\S', line):
+                if re.search(r'^\S', line) and not re.search(r'^#', line):
                     IS_CLASS_INNER = False
                     class_statements.append(line_cache)
                     line_cache = ''
                     temp.insert(0, line)
                 else:
                     line_cache += line
-            elif IS_FUNC_INNER:
+            elif IS_FUNC_INNER and not re.search(r'^#', line):
                 if re.search(r'^\S', line):
                     IS_FUNC_INNER = False
                     func_statements.append(line_cache)

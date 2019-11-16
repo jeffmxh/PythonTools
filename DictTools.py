@@ -40,7 +40,7 @@ class DictTools:
     def flatten_dict(adict):
         copy = __import__('copy')
         temp = copy.deepcopy(adict)
-        while isinstance(temp, dict) and any(isinstance(v, dict) for k, v in temp.items()):
+        while isinstance(temp, dict) and any(isinstance(v, (list, tuple, dict)) for k, v in temp.items()):
             temp = DictTools._flatten_dict(temp)
         return temp
 
@@ -48,13 +48,17 @@ class DictTools:
     def _flatten_dict(adict):
         result = {}
         for k, v in adict.items():
-            if not isinstance(v, dict):
-                result[k] = v
-            else:
+            if isinstance(v, dict):
                 for kk, vv in v.items():
                     kk_re = DictTools.trans_name(kk)
                     key_name = '{}_{}'.format(k, kk_re)
                     result[key_name] = vv
+            elif isinstance(v, (list, tuple)):
+                for i, x in enumerate(v):
+                    key_name = '{}_{}'.format(k, i)
+                    result[key_name] = x
+            else:
+                result[k] = v
         return result
 
     @staticmethod
@@ -68,3 +72,18 @@ class DictTools:
             key_list = [x.title() for x in key_list]
             key_name = ''.join(key_list)
         return key_name
+    
+if __name__ == '__main__':
+    adict = {
+        'a': {
+            'a1': 'aaa',
+            'a2': 'aaaaa'
+        },
+        'b': [
+            {'key': 1},
+            {'key': 2},
+            {'key': 3}
+        ]
+    }
+
+    print(DictTools.flatten_dict(adict))
